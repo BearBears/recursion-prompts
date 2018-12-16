@@ -76,12 +76,29 @@ var sumBelow = function(n) {
 	if (n > 1)		return (n-1) + sumBelow(n-1);
 	if (n < -1)		return (n+1) + sumBelow(n+1); 
 };
-console.log(sumBelow(10));
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
 var range = function(x, y) {
+	/* Possibilities:
+	default case:	
+		x+1 === y || x === y+1 --> return []; //default case, we've reached the end
+	recursive cases:
+		x+1 > y --> need to concat y+1, and call (x+1,y)
+		y+1 < x --> need to concat x+1, and call (y+1,x)
+	
+	we need to do x+1 and y+1 (because we arent including the ends)
+	*/
+	
+	if (x+1 === y || x-1 === y || x === y) return []; //default
+	else if (x+1 < y){
+		return [x+1].concat(range(x+1,y));
+	} else if (x-1 > y){
+		return [x-1].concat(range(x-1,y));
+	}
 };
+
+console.log(range(4,1));
 
 // 7. Compute the exponent of a number.
 // The exponent of a number says how many times the base number is used as a factor.
