@@ -57,8 +57,26 @@ var isEven = function(n) {
 // 5. Sum all integers below a given integer.
 // sumBelow(10); // 45
 // sumBelow(7); // 21
+
+
 var sumBelow = function(n) {
+	/* Possibilities
+		n === 0 --> return 0
+		n === 1 --> return 1
+		n > 1   --> return n+sumBelow(n-1);
+		n === -1 --> return -1;
+		n < -1  --> return n+(sumBelow(n+1));
+		
+		we need a way to remove n from the final result;
+	*/
+
+	if (n === 0)	return 0;
+	if (n === 1)	return 0;
+	if (n === -1)	return 0;
+	if (n > 1)		return (n-1) + sumBelow(n-1);
+	if (n < -1)		return (n+1) + sumBelow(n+1); 
 };
+console.log(sumBelow(10));
 
 // 6. Get the integers within a range (x, y).
 // range(2,9); // [3,4,5,6,7,8]
